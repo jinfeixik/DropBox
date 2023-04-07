@@ -1,0 +1,27 @@
+package com.qst.test;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.qst.dao.UserInfoMapper;
+import com.qst.entity.UserInfo;
+
+public class YYTest001 {
+
+	
+	public static void main(String[] args) {
+		
+		/*String path="spring-mvc.xml";
+		ApplicationContext ac = new ClassPathXmlApplicationContext(path);
+		UserInfoMapper userDao = (UserInfoMapper) ac.getBean("userDao");
+			UserInfo user = userDao.findUserInfoById(1);
+			if(user != null) {
+			System.out.println(user);
+			} else {
+				System.out.println("没有");
+			}*/
+		
+	}
+	
+}

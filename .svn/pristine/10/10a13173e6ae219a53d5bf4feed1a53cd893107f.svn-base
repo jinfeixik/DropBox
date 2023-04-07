@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.FolderInfoMapper">
+      
+      <select id="findAllFolder"  parameterType="com.qst.entity.FolderInfo"  resultMap="folderInfoMap" >
+                   select * from tb_folder_Info where user_id=#{userId} and folder_parentFolderId=#{folder_parentFolderId}
+       </select>
+
+
+
+      <insert id="addFolderInfo" parameterType="com.qst.entity.FolderInfo"  >
+      	insert into tb_folder_info(folder_name, user_id, folder_parentFolderId) values(#{folderName}, #{userId}, #{folderParentFolderId})
+      </insert>
+      
+
+       <resultMap type="com.qst.entity.FolderInfo" id="folderInfoMap">
+               <result  property="folderId" column="folder_id"/>
+               <result  property="folderName" column="folder_name"/>
+               <result  property="userId" column="user_id"/>
+               <result  property="folderParentFolderId" column="folder_parentFolderId"/>  
+       </resultMap>
+       
+      
+      
+
+     
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

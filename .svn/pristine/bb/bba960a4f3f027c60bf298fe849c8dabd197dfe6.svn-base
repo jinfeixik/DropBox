@@ -1,0 +1,45 @@
+package com.qst.service.impl;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.qst.dao.FolderInfoMapper;
+import com.qst.entity.FolderInfo;
+import com.qst.service.FindAllFolderService;
+
+
+@Service
+public class FindAllFolderServiceImpl implements FindAllFolderService{
+    
+	
+	@Autowired
+	FolderInfoMapper folderInfo;
+	
+	@Override
+	public List<FolderInfo> findFolder(HttpServletRequest request) {
+		    int userId=1;
+			
+			request.getSession().setAttribute("userId", userId);
+			
+			userId=(Integer) request.getSession().getAttribute("userId");
+			
+			System.out.println("userId为："+userId);
+			
+			// FolderInfo folderInfo
+			
+			
+			System.out.println("所有文件："+folderInfo.findAllFolder(userId));
+					
+			List<FolderInfo> folderInfos=folderInfo.findAllFolder(userId);
+				
+			
+			return folderInfos;
+	}
+	
+	
+
+}

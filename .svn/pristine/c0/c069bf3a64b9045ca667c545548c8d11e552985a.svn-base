@@ -1,0 +1,54 @@
+package com.qst.controller;
+
+import java.sql.Timestamp;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.qst.dao.UserInfoMapper;
+import com.qst.entity.UserInfo;
+import com.qst.service.impl.UserInfoServiceImpl;
+
+@Controller
+public class PersonalInfoController {
+	@Autowired
+	private UserInfoMapper userService;
+	@Autowired
+	private UserInfoServiceImpl userInfoServiceImpl;
+	
+	@RequestMapping("personalInfo.form")
+	public String findUserInfo(UserInfo userInfo,HttpServletRequest request,HttpSession session){
+	    userInfo = (UserInfo) session.getAttribute("user");
+		System.out.println("用户名"+userInfo.getUserName());
+		UserInfo userInfo2 = userService.findMemberById(userInfo.getUserId());
+		/*UserInfo userInfo2 = userService.findUserName(userInfo.getUserName());*/
+		//System.out.println("个人信息2 "+userInfo2.toString());
+		session.setAttribute("user",userInfo2);
+		//用户名
+		session.setAttribute("userName",userInfo.getUserName());
+		//已用空间
+		session.setAttribute("used", userInfo.getUsedSpace());
+		//总空间
+		session.setAttribute("total", userInfo.getTotalSpace());
+		//邮箱
+		session.setAttribute("userEmail",userInfo.getUserEmail());
+		//用户注册时间
+		session.setAttribute("userRegisterTime", userInfo.getUserRegisterTime());
+		//会员信息
+		System.out.println(userInfo.getUserMemberInfo());
+		session.setAttribute("memberInfo",userInfo.getUserMemberInfo());
+		//订单编号
+		String ID = userInfoServiceImpl.createOrderNum();
+		System.out.println("ID:"+ID);
+		session.setAttribute("orderNum",ID);
+		//头
+		session.setAttribute("image", userInfo.getUserAvatar());
+		return "personalInfo";
+	}
+	
+
+}

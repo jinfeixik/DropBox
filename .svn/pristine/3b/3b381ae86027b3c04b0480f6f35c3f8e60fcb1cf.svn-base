@@ -1,0 +1,16 @@
+package com.qst.service;
+
+import java.util.List;
+
+import com.qst.entity.RecycleInfo;
+
+public interface RecycleInfoService {
+	
+	public void moveToRecycle(int fileId);
+
+	public void moveOutOfRecycle(int fileId);
+
+	void deleteRecycle(int fileId);
+
+	List<RecycleInfo> getAllRecycle();
+}

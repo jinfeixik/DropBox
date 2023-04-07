@@ -1,0 +1,94 @@
+package com.qst.entity;
+
+import java.sql.Timestamp;
+
+public class FileTransfer {
+private Integer transferId;
+private Integer userId;
+private Integer fileId;
+private Integer transferProgress;
+private Integer transferStatus;
+private Timestamp transferTime;
+private Integer transferUploadaAndDownloadFlag;
+private Double transferFileSize;
+
+
+@Override
+public String toString() {
+	return "FileTransfer [transferId=" + transferId + ", userId=" + userId
+			+ ", fileId=" + fileId + ", transferProgress=" + transferProgress
+			+ ", transferStatus=" + transferStatus + ", transferTime="
+			+ transferTime + ", transferUploadaAndDownloadFlag="
+			+ transferUploadaAndDownloadFlag + ", transferFileSize="
+			+ transferFileSize + "]";
+}
+public FileTransfer() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+public FileTransfer(Integer transferId, Integer userId, Integer fileId,
+		Integer transferProgress, Integer transferStatus,
+		Timestamp transferTime, Integer transferUploadaAndDownloadFlag,
+		Double transferFileSize) {
+	super();
+	this.transferId = transferId;
+	this.userId = userId;
+	this.fileId = fileId;
+	this.transferProgress = transferProgress;
+	this.transferStatus = transferStatus;
+	this.transferTime = transferTime;
+	this.transferUploadaAndDownloadFlag = transferUploadaAndDownloadFlag;
+	this.transferFileSize = transferFileSize;
+}
+public Integer getTransferId() {
+	return transferId;
+}
+public void setTransferId(Integer transferId) {
+	this.transferId = transferId;
+}
+public Integer getUserId() {
+	return userId;
+}
+public void setUserId(Integer userId) {
+	this.userId = userId;
+}
+public Integer getFileId() {
+	return fileId;
+}
+public void setFileId(Integer fileId) {
+	this.fileId = fileId;
+}
+public Integer getTransferProgress() {
+	return transferProgress;
+}
+public void setTransferProgress(Integer transferProgress) {
+	this.transferProgress = transferProgress;
+}
+public Integer getTransferStatus() {
+	return transferStatus;
+}
+public void setTransferStatus(Integer transferStatus) {
+	this.transferStatus = transferStatus;
+}
+public Timestamp getTransferTime() {
+	return transferTime;
+}
+public void setTransferTime(Timestamp transferTime) {
+	this.transferTime = transferTime;
+}
+public Integer getTransferUploadaAndDownloadFlag() {
+	return transferUploadaAndDownloadFlag;
+}
+public void setTransferUploadaAndDownloadFlag(
+		Integer transferUploadaAndDownloadFlag) {
+	this.transferUploadaAndDownloadFlag = transferUploadaAndDownloadFlag;
+}
+public Double getTransferFileSize() {
+	return transferFileSize;
+}
+public void setTransferFileSize(Double transferFileSize) {
+	this.transferFileSize = transferFileSize;
+}
+
+
+}

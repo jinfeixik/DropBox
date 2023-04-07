@@ -1,0 +1,40 @@
+package com.qst.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.qst.dao.FileInfoMapper;
+import com.qst.dao.UserInfoMapper;
+import com.qst.entity.FileInfo;
+import com.qst.entity.UserInfo;
+import com.qst.service.FileInfoService;
+import com.qst.util.TimeUtil;
+@Service
+public class FileInfoServiceImpl implements FileInfoService{
+
+	@Autowired
+	FileInfoMapper fileDao;
+	
+	@Autowired
+	UserInfoMapper userDao;
+	@Transactional
+	@Override
+	public void addFileInfo(FileInfo fileInfo, UserInfo userInfo) {
+		
+		fileInfo.setFileStatus(1);//默认为正常1
+		
+		fileInfo.setUploadTime(TimeUtil.time2Timestamp());
+		
+		System.out.println("文件信息：" +fileInfo.toString());
+		
+		fileDao.addFileInfo(fileInfo);
+		
+		double size = fileInfo.getFileSize() + userInfo.getUsedSpace();
+		userInfo.setUsedSpace(size);//改变已用空间大小
+		userDao.updateUserUsedSize(userInfo);
+	
+		
+	}
+
+}

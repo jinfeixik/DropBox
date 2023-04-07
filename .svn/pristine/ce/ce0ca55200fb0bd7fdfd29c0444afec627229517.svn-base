@@ -1,0 +1,30 @@
+package com.qst.dao;
+
+
+import com.qst.entity.FolderInfo;
+import java.util.List;
+
+
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-28下午3:32:54
+ * @version v1.0
+ * 文件夹管理
+ */
+public interface FolderInfoMapper {
+	
+	
+
+	public List<FolderInfo> findAllFolder(FolderInfo folderInfo);
+	
+	public void addFolderInfo(FolderInfo folderInfo);
+	
+	/**
+	 * @param folderInfo
+	 * 修改文件夹名字
+	 */
+	public void updateFolderName(FolderInfo folderInfo);
+	public List<FolderInfo>  findFolderBySearch(FolderInfo folderInfo);
+	
+	
+}

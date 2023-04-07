@@ -1,0 +1,84 @@
+package com.qst.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.qst.entity.FileInfo;
+import com.qst.service.FindAllFileService;
+
+/**
+ * 
+ * @author 李阳liyang
+ * @date 2019-8-29下午9:28:53
+ * @version v1.0
+ */
+
+@Controller
+public class FindAllFileController {
+	
+	@Autowired
+	FindAllFileService fileService;
+	
+	int flag;
+	
+	
+	@RequestMapping("listAllFile.form")
+	public String ListAllFile(ModelMap map,HttpServletRequest request){
+		
+		
+		List<FileInfo> fileInfos=fileService.findFile(request);
+		
+		map.addAttribute("fileInfos", fileInfos);
+		
+		
+		return "listAllFile";
+	}
+	
+	@RequestMapping(value="listFile.form",method = RequestMethod.POST)
+	@ResponseBody
+    public List<FileInfo> FindTypeInfo(ModelMap map,HttpServletRequest request){
+    	
+    	List<FileInfo> fileInfos=fileService.findFile(request);
+    	
+    	System.out.println(request.getParameter("flag"));
+    	
+    	int flag=Integer.parseInt(request.getParameter("flag"));
+    	
+    	System.out.println("flag:"+flag);
+    	
+    	List<FileInfo> fileInfos1=new ArrayList<FileInfo>(); 
+    	
+        for(FileInfo fileInfo:fileInfos){
+			
+			if(fileInfo.getFileType()==flag){
+				
+				fileInfos1.add(fileInfo);
+			
+			}
+			
+	    }
+        
+        System.out.println("分类后："+fileInfos1);
+        
+        //fileInfos1.get(0).setFileName("小芳");
+        
+        //map.addAttribute("fileInfo", fileInfos1);
+        
+    	return   fileInfos1;
+    }
+	
+	
+	
+	
+
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.RecycleInfoMapper">
+
+	<!-- 把一个文件移动到回收站 -->
+	<insert id="addRecycle" parameterType="com.qst.entity.RecycleInfo">
+		insert into tb_recycle(user_id,file_id,recycle_time) values(#{userId},#{fileId},#{recycleTime})
+	</insert>
+
+	<delete id="deleteRecycle" parameterType="com.qst.entity.RecycleInfo">
+		delete from tb_recycle where file_id=#{fileId} and user_id=#{userId}
+	</delete>
+	
+	<delete id="deleteFile" parameterType="com.qst.entity.FileInfo">
+		delete from tb_file_info where file_id=#{fileId} and file_user_id=#{userId} and file_status=0
+	</delete>
+	
+	<delete id="clearRecycle" parameterType="int">
+		delete from tb_recycle where user_id=#{userId}
+	</delete>
+	
+	<delete id="clearFile" parameterType="int">
+		delete from tb_file_info where file_user_id=#{userId} and file_status=0
+	</delete>
+	
+	<select id="findAllRecycle" parameterType="int" resultMap="findAllRecycle1">
+		select * from tb_recycle where user_id=#{userId}
+	</select>
+	<resultMap type="com.qst.entity.RecycleInfo" id="findAllRecycle1">
+		<id property="recycleId" column="recycle_id"/>
+		<result property="userId" column="user_id"/>
+		<result property="fileId" column="file_id"/>
+		<result property="recycleTime" column="recycle_time"/>
+	</resultMap>
+
+	<select id="findAllFile" parameterType="int" resultMap="findFile">
+		select * from tb_file_info where file_status=0 and file_user_id=#{userId}
+	</select>
+	<resultMap type="com.qst.entity.FileInfo" id="findFile">
+		<result  property="fileId" column="file_id"/>
+        <result  property="userId" column="file_user_id"/>
+        <result  property="filePath" column="file_path"/>
+        <result  property="fileName" column="file_name"/>
+        <result  property="fileSize" column="file_size"/>
+        <result  property="fileStatus" column="file_status"/>
+        <result  property="fileType" column="file_type"/>
+        <result  property="uploadTime" column="file_uploadTime"/>
+        <result  property="folderId" column="file_folderId"/>
+        <result  property="fileTransformPDF" column="file_transformPDF"/>
+	</resultMap>
+	
+	<!-- 通过id获取一个文件信息 -->
+	<select id="findFileById" parameterType="int" resultMap="findFile">
+		select * from tb_file_info where file_id=#{fileId}
+	</select>
+
+	<!-- 修改文件状态 -->
+	<update id="updateFileStatus" parameterType="com.qst.entity.FileInfo">
+		update tb_file_info set file_status=#{fileStatus} where file_id=#{fileId}
+	</update>
+	
+	<!-- 修改用户可用空间 -->
+	<update id="updateUsedSpace" parameterType="com.qst.entity.UserInfo">
+		update tb_file_info set user_usedSpace=#{usedSpace} where user_id=#{userId}
+	</update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

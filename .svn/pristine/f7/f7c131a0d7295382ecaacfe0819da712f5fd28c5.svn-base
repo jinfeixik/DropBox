@@ -1,0 +1,128 @@
+package com.qst.entity;
+
+import java.sql.Timestamp;
+
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-28下午3:22:32
+ * @version v1.0
+ * 会员信息表
+ */
+public class MemberInfo {
+	
+	private Integer memberId;
+	private Integer userId;
+	private Integer memberStatus;
+	private Timestamp memberStartTime;
+	private Timestamp memberEndTime;
+	
+	
+	public MemberInfo(){
+		
+	}
+	
+	
+	public MemberInfo(Integer memberId, Integer userId, Integer memberStatus,
+			Timestamp memberStartTime, Timestamp memberEndTime) {
+		super();
+		this.memberId = memberId;
+		this.userId = userId;
+		this.memberStatus = memberStatus;
+		this.memberStartTime = memberStartTime;
+		this.memberEndTime = memberEndTime;
+	}
+
+
+
+
+
+	public Integer getMemberId() {
+		return memberId;
+	}
+
+
+
+
+
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
+	}
+
+
+
+
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+
+
+
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+
+
+
+
+	public Integer getMemberStatus() {
+		return memberStatus;
+	}
+
+
+
+
+
+	public void setMemberStatus(Integer memberStatus) {
+		this.memberStatus = memberStatus;
+	}
+
+
+
+
+
+	public Timestamp getMemberStartTime() {
+		return memberStartTime;
+	}
+
+
+
+
+
+	public void setMemberStartTime(Timestamp memberStartTime) {
+		this.memberStartTime = memberStartTime;
+	}
+
+
+
+
+
+	public Timestamp getMemberEndTime() {
+		return memberEndTime;
+	}
+
+
+
+
+
+	public void setMemberEndTime(Timestamp memberEndTime) {
+		this.memberEndTime = memberEndTime;
+	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "MemberInfo [memberId=" + memberId + ", userId=" + userId
+				+ ", memberStatus=" + memberStatus + ", memberStartTime="
+				+ memberStartTime + ", memberEndTime=" + memberEndTime + "]";
+	}
+	
+	
+
+}

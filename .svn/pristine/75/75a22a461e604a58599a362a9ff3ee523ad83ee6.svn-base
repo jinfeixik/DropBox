@@ -1,0 +1,22 @@
+package com.qst.service;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.qst.entity.UserInfo;
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-28下午3:58:06
+ * @version v1.0
+ * 用户管理
+ */
+
+public interface UserInfoService {
+	
+	/**
+	 * @param userInfo
+	 * 添加一条用户记录
+	 */
+	public void addUserInof(UserInfo userInfo);
+
+}

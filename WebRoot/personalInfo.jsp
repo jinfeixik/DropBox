@@ -1,0 +1,62 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+
+<title>个人中心</title>
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="css/index.css" type="text/css" />
+</head>
+
+<body>
+		<form name="alipayment" action="alipay.trade.page.pay.jsp" method="post" id="formSubbmit">
+		<div id="body1" class="show" name="divcontent" style="display: none">
+		<input id="WIDout_trade_no" name="WIDout_trade_no"  value=${orderNum}/><br>
+		<input id="WIDsubject" name="WIDsubject" value="yiyifangceshi" /><br>
+		<input type="text"  id="WIDtotal_amount"  name="WIDtotal_amount" value="0.9"></br> 
+		<input id="WIDbody" name="WIDbody" value="yiyifang"/><br>	
+		</div>			
+		</form>
+		
+		
+		<div class="list-group" style="padding: 40px 150px 0px 150px">
+			<a class="list-group-item active">
+				<h4 class="list-group-item-heading" ><font color="white">个人资料</font></h4>
+				</a>
+			<ul class="list-group">
+				<li class="list-group-item">头像：&nbsp;&nbsp;<img src="${image}"
+					class="touxiang" /></li><li class="list-group-item"></li>
+				<li class="list-group-item">用户名：&nbsp;&nbsp;${userName}</li><li class="list-group-item"></li>
+				<li class="list-group-item">用户等级:&nbsp;&nbsp;
+				<c:if test="${memberInfo.memberStatus==0}">&nbsp;&nbsp;普通用户
+						<input  type="button" value="开通会员" onclick="check()" style="margin-left:750px "/>
+					</c:if> 
+					<c:if test="${memberInfo.memberStatus==1}">
+						<font color="#f0d399" >VIP会员</font>&nbsp;&nbsp;&nbsp;&nbsp;<font style="margin-left: 560px">${memberInfo.memberEndTime}到期</font>&nbsp;&nbsp;
+						<input  type="button" value="立即续费" onclick="check()" />
+						
+					</c:if>
+				</li><li class="list-group-item"></li>
+				<li class="list-group-item">邮箱地址：&nbsp;&nbsp;${userEmail}</li><li class="list-group-item"></li>
+				<li class="list-group-item">已用空间/总空间:&nbsp;&nbsp; <font color="red">${used}</font>/${total}&nbsp;GB</li><li class="list-group-item"></li>
+				<li class="list-group-item">注册时间：&nbsp;&nbsp;${userRegisterTime}</li><li class="list-group-item"></li>
+				<li class="list-group-item"><a href="updatepassword.jsp">修改密码</a>
+				<a href="listAllFile.form"  style="margin-left: 400px">返回主页</a>
+				<a href="updateUserInfo.jsp"  style="margin-left: 370px">编辑信息</a>
+				</li>
+			</ul>
+		</div>
+
+</body>
+<script type="text/javascript">
+ function check(){
+ //alert("哈哈哈哈");
+   $("#formSubbmit").submit();
+  //window.location.href="alipay.trade.page.pay.jsp?WIDout_trade_no=" + ${orderNum} + "WIDtotal_amount=99";
+ }
+</script>
+</html>

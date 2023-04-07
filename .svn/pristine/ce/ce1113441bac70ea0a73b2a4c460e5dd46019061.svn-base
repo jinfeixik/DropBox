@@ -1,0 +1,115 @@
+package com.qst.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.qst.entity.FileInfo;
+import com.qst.entity.UserInfo;
+import com.qst.service.RecycleInfoService;
+
+@Controller
+public class RecycleController {
+	@Autowired
+	RecycleInfoService recycleInfoService;
+
+	/**
+	 * function:把文件移入回收站
+	 * 
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("moveToRecycle.form")
+	public String moveToRecycle(HttpServletRequest request) {
+		int fileId = Integer.parseInt(request.getParameter("fileId"));
+		HttpSession session = request.getSession(true);
+		UserInfo user = (UserInfo) session.getAttribute("user");
+		//int userId = user.getUserId();
+		 int userId = 1;
+		// System.out.println("user " +user.toString());
+		recycleInfoService.moveToRecycle(fileId, userId);
+
+		return "redirect:/listAllFile.form";
+	}
+
+	/**
+	 * function:把文件从回收站移出
+	 * 
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("moveOutOfRecycle.form")
+	public String moveOutOfRecycle(HttpServletRequest request) {
+		int fileId = Integer.parseInt(request.getParameter("fileId"));
+		HttpSession session = request.getSession(true);
+		UserInfo user = (UserInfo) session.getAttribute("user");
+		//int userId = user.getUserId();
+		 int userId = 1;
+		recycleInfoService.moveOutOfRecycle(fileId, userId);
+
+		return "lajixiang";
+	}
+
+	/**
+	 * function:删除回收站里的某个文件
+	 * 
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("deleteRecycle.form")
+	public String deleteRecycle(HttpServletRequest request) {
+		int fileId = Integer.parseInt(request.getParameter("fileId"));
+		HttpSession session = request.getSession(true);
+		UserInfo user = (UserInfo) session.getAttribute("user");
+		//int userId = user.getUserId();
+		 int userId = 1;
+		recycleInfoService.deleteRecycle(fileId, userId);
+
+		return "lajixiang";
+	}
+
+	/**
+	 * function:用户清空回收站
+	 * 
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("clearRecycle.form")
+	public String clearRecycle(HttpServletRequest request) {
+		int fileId = Integer.parseInt(request.getParameter("fileId"));
+		HttpSession session = request.getSession(true);
+		UserInfo user = (UserInfo) session.getAttribute("user");
+		//int userId = user.getUserId();
+		 int userId = 1;
+		recycleInfoService.clearRecycle(userId);
+
+		return "lajixiang";
+	}
+
+	/**
+	 * function:获取回收站里的所有文件
+	 * 
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("getAllRecycle.form")
+	public ModelAndView getAllRecycle(HttpServletRequest request) {
+		ModelAndView mav = new ModelAndView("lajixiang");
+		HttpSession session = request.getSession(true);
+		UserInfo user = (UserInfo) session.getAttribute("user");
+		//int userId = user.getUserId();
+		 int userId = 1;
+		List<FileInfo> fileInfos = recycleInfoService.getAllRecycleFile(userId);
+		mav.addObject("fileInfos", fileInfos);
+
+		return mav;
+	}
+
+}

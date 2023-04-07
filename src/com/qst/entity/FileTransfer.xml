@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.FileTransferMapper">
+
+ <select id="findUserAllFileTransferList"   parameterType="int"  resultMap="FileTransfer">
+            select * from tb_file_transfer where user_id=#{i}
+ </select>
+ 
+ <insert id="addTransferDao" parameterType="com.qst.entity.FileTransfer" >
+      	insert into tb_file_transfer(user_id,file_id,transfer_progress,transfer_status,transfer_time,transfer_upload_and_download_flag,transfer_file_size,transfer_file_name) values(#{userId}, #{fileId}, #{transferProgress},#{transferStatus},#{transferTime},#{transferUploadaAndDownloadFlag},#{transferFileSize},#{transferFileName})
+ </insert>
+ <delete id="delTransferList" parameterType="int">
+ delete from tb_file_transfer where transfer_id=#{transfer_id} 
+ </delete>
+  <delete id="delUserAllTransferList" parameterType="int">
+  delete from tb_file_transfer where user_id=#{user_id} 
+  </delete>
+ <resultMap type="com.qst.entity.FileTransfer" id="FileTransfer">
+               <result  property="transferId" column="transfer_id"/>
+               <result  property="userId" column="user_id"/>
+               <result  property="fileId" column="file_id"/>
+               <result  property="transferProgress" column="transfer_progress"/>
+               <result  property="transferStatus" column="transfer_status"/>
+               <result  property="transferTime" column="transfer_time"/>
+               <result  property="transferUploadaAndDownloadFlag" column="transfer_upload_and_download_flag"/>
+               <result  property="transferFileSize" column="transfer_file_size"/>  
+               <result  property="transferFileName" column="transfer_file_name"/>                          
+   </resultMap>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.FileInfoMapper">
+
+      <select id="findFileInfo"   parameterType="int"  resultMap="fileInfoMap" >
+                   select * from tb_file_info where file_id=#{fileId}
+      </select>
+      <select id="findAllFile"   parameterType="int"  resultMap="fileInfoMap" >
+                   select * from tb_file_info where file_user_id=#{userId} and file_status=1 and folder_id=0
+      </select>
+      
+      <select id="findAllFile1"   parameterType="int"  resultMap="fileInfoMap" >
+                   select * from tb_file_info where file_user_id=#{userId} and file_status=1
+      </select>
+      
+      <select id="findFileByType"  parameterType="int"  resultType="com.qst.entity.FileInfo" >
+                   select * from tb_file_info where file_type=#{fileType}
+      </select>
+      
+      
+      <resultMap type="com.qst.entity.FileInfo" id="fileInfoMap">
+               <result  property="fileId" column="file_id"/>
+               <result  property="userId" column="file_user_id"/>
+               <result  property="filePath" column="file_path"/>
+               <result  property="fileName" column="file_name"/>
+               <result  property="fileSize" column="file_size"/>
+               <result  property="fileStatus" column="file_status"/>
+               <result  property="fileType" column="file_type"/>
+               <result  property="uploadTime" column="file_uploadTime"/>
+               <result  property="folderId" column="file_folderId"/>
+               <result  property="fileTransformPDF" column="file_transformPDF"/>
+               
+       </resultMap>
+      
+      
+
+
+
+	<insert id="addFileInfo" parameterType="com.qst.entity.FileInfo">
+
+		insert into tb_file_info(file_user_id, file_path, file_name,
+		file_size, file_status, file_type, file_uploadTime, folder_id,
+		file_transformPDF)
+		values(#{userId}, #{filePath}, #{fileName}, #{fileSize}, #{fileStatus}, #{fileType},
+		#{uploadTime}, #{folderId}, #{fileTransformPDF})
+
+	</insert>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

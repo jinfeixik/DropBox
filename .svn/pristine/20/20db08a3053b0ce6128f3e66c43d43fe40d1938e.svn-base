@@ -1,0 +1,31 @@
+package com.qst.dao;
+
+import org.springframework.stereotype.Component;
+
+import com.qst.entity.UserInfo;
+
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-28下午3:24:33
+ * @version v1.0
+ * 用户信息管理
+ */
+@Component
+public interface UserInfoMapper {
+	
+	//添加一条用户信息
+	public void addUserInfo(UserInfo userInfo);
+
+	public UserInfo findUserInfoById(int id);
+	
+	public UserInfo findUserInfoByName(UserInfo userInfo);
+	
+	public void updateUserUsedSize(UserInfo userInfo);
+	
+
+	
+}
+
+
+
+

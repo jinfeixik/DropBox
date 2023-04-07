@@ -1,0 +1,18 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title></title>	
+    <link href="" rel="stylesheet">
+    <script type="text/javascript" src=""></script>
+  </head>
+  
+
+<body>
+
+请点击下载(单个下载)：<a href="downlode.form?filename=nofile.png">moni.jpg</a><br>
+请点击下载(选中复选框多个文件)：<br>
+请点击下载(选中文件夹下载--找到包括该路径的所有文件及文件夹):<br>
+</body>
+</html>

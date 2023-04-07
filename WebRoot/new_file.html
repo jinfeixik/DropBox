@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>文档管理系统</title>
+		<link rel="stylesheet" href="css/common.css" type="text/css" />
+		<link rel="stylesheet" href="css/index.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			input[class=seafch-input] {
+				width: 240px;
+				box-sizing: border-box;
+				border: 2px solid #FF0099;
+				border-radius: 10px;
+				font-size: 13px;
+				background-color: white;
+				background-image: url('searchicon.png');
+				background-position: 10px 10px;
+				background-repeat: no-repeat;
+				padding: 12px 20px 12px 4px;
+				-webkit-transition: width 0.4s ease-in-out;
+				transition: width 0.4s ease-in-out;
+				height: 35px;
+				margin-top: 10px;
+				margin-left: -30px;
+			}
+			
+			input[class=seafch-input]:focus {
+				width: 300%;
+			}
+		</style>
+		<script type="text/javascript" language="javascript">
+			function display() {
+				document.getElementById("box").style.display = "block";
+			}
+
+			function disappear() {
+				document.getElementById("box").style.display = "none";
+			}
+		</script>
+	</head>
+	<!--顶部-->
+
+	<body>
+		<div class="nav">
+			<div class="nav cl">
+				<div class="nav_z z" style="margin-top: 8px;">
+					<font size="6" color="#FF33FF" style="font-family: STHupo;">9</font>
+					<font size="6" color="#CC33FF" style="font-family: STHupo;">0</font>
+					<font size="6" color="#9999FF" style="font-family: STHupo;">网</font>
+					<font size="6" color="#6699FF" style="font-family: STHupo;">盘</font>
+				</div>
+
+				<div class="nav_st z" style="margin-top: 7px;">
+					<font size="4" color="#FF6666" style="font-family: STLiti;margin-left: -110px;">不一样的</font>
+					<font size="5" color="#FF3366" style="font-family: STLiti;">云</font>
+					<font size="4" color="#FF0066" style="font-family: STLiti;">存储</font>
+				</div>
+
+				<div class="nav_st z">
+					<input type="text" name="search" placeholder="搜索.." class="seafch-input">
+				</div>
+
+				<div class="nav_y y">
+					<a href="http://www.bootstrapmb.com/">关于我们</a>
+					<span>丨</span>
+					<a href="">联系我们</a>
+				</div>
+				<div class="userNumber y">
+					<div class="dropdown">
+						<a href="" id="dropdownMenu1" onmouseover="display()" onmouseout="disappear()" data-toggle="dropdown">
+							<img src="images/timg.jpg" class="touxiang" />&nbsp;&nbsp;&nbsp;
+							<font size="3" color="#009688" style="font-family: KaiTi_GB2312  ;">用户名</font>&nbsp;&nbsp;&nbsp;
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="box" onmouseover="display()" onmouseout="disappear()" >
+							<li role="presentation" style="height: 60px;">
+								<a role="menuitem" tabindex="-1" href="#" >
+								   <div class="col-md-4">
+									<img src="images/timg.jpg" class="touxiang1" style="margin-top: 0px;margin-left: -20px;"/>&nbsp;&nbsp;&nbsp;
+									</div>
+									<div class="col-md-8" style="margin-top: 5px;">
+									<font size="3" color="#009688"  >用户名</font>&nbsp;&nbsp;&nbsp;<br />
+									<font size="2" color="#000"  style="margin-top: -40px;">会员等级</font>&nbsp;&nbsp;&nbsp;
+									</div>
+								</a>
+							</li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation" >
+								<a role="menuitem" tabindex="-1" href="#">个人中心</a>
+							</li>
+							<li role="presentation" >
+								<a role="menuitem" tabindex="-1" href="#">退出</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<!--顶部结束-->
+		<!--菜单-->
+		<div class="max_container" style="width: 1500px;width: 300px;">
+			<div class="col-md-3">ttt</div>
+			<div class="col-md-9">ggg</div>
+		</div>
+		<div class="left-menu">
+			<div class="left-menu-top">
+				<a href="javascript:void(0)">
+					<div class="left-menu-top-small" style="margin-left:55px;">
+						<input type="button" class="btn btn-primary" value="新建文件" />
+						<!--<img src="images/index_01.png" />-->
+					</div>
+				</a>
+				<a href="javascript:void(0)">
+					<div class="left-menu-top-small" style="margin-left:55px;">
+						<input type="button" class="btn btn-success" value="上传文件" />
+						<!--<img src="images/index_02.png" />-->
+					</div>
+				</a>
+			</div>
+			<div class="left-menu-one">
+				<a href="my.html">
+					<div class="left-menu-one-small">
+						<img src="images/index_03.png" />
+					</div>
+				</a>
+				<a href="zuijin.html">
+					<div class="left-menu-one-small">
+						<img src="images/index_05.png" />
+					</div>
+				</a>
+			</div>
+			<div class="left-menu-two">
+				<a href="javascript:void(0)">
+					<div class="left-menu-two-small">
+						<img src="images/excel01.png" />
+					</div>
+				</a>
+				<a href="javascript:void(0)">
+					<div class="left-menu-two-small">
+						<img src="images/ppt01.png" />
+					</div>
+				</a>
+				<a href="javascript:void(0)">
+					<div class="left-menu-two-small">
+						<img src="images/word01.png" />
+					</div>
+				</a>
+			</div>
+			<div class="left-menu-three">
+				<a href="caogao.html">
+					<div class="left-menu-three-small">
+						<img src="images/caogaoxiang01.png" />
+					</div>
+				</a>
+				<a href="lajixiang.html">
+					<div class="left-menu-three-small">
+						<img src="images/lajixiang01.png" />
+					</div>
+				</a>
+			</div>
+			<div class="left-menu-four">
+				<div class="left-menu-four-small">
+					<div class="left-menu-four-small-new"></div>
+				</div>
+				<div class="contain_four">
+					<div class="contain_four_main">
+						<span>容量：</span>
+						<span class="cont">5</span>GB；可用
+						<span class="use">3</span>GB
+					</div>
+					<div class="max_add">
+						<button class="max_container">升级容量</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		
+		
+
+			<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+			<script type="text/javascript" src="js/index.js"></script>
+		</body>
+
+</html>

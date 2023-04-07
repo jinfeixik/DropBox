@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="DropBoxPro"
+  id="myeclipse.1566972926172"
+  context-root="/DropBoxPro"
+  j2ee-spec="6.0"
+  archive="DropBoxPro.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

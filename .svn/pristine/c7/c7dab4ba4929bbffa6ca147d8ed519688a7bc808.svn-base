@@ -1,0 +1,227 @@
+package com.qst.entity;
+
+import java.sql.Timestamp;
+
+
+
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-28下午3:21:38
+ * @version v1.0
+ * 文件信息表
+ */
+public class FileInfo {
+	
+	private Integer fileId;
+	private Integer userId;
+	private String filePath;
+	private String fileName;
+	private Double fileSize;
+	private Integer fileStatus;
+	private Integer fileType;
+	private Timestamp uploadTime;
+	private Integer folderId;
+	private String fileTransformPDF;
+	
+	
+	public FileInfo(){
+		
+	}
+	
+	
+	public FileInfo(Integer fileId, Integer userId, String filePath,
+			String fileName, Double fileSize, Integer fileStatus,
+			Integer fileType, Timestamp uploadTime, Integer folderId,
+			String fileTransformPDF) {
+		super();
+		this.fileId = fileId;
+		this.userId = userId;
+		this.filePath = filePath;
+		this.fileName = fileName;
+		this.fileSize = fileSize;
+		this.fileStatus = fileStatus;
+		this.fileType = fileType;
+		this.uploadTime = uploadTime;
+		this.folderId = folderId;
+		this.fileTransformPDF = fileTransformPDF;
+	}
+
+
+
+
+
+	public Integer getFileId() {
+		return fileId;
+	}
+
+
+
+
+
+	public void setFileId(Integer fileId) {
+		this.fileId = fileId;
+	}
+
+
+
+
+
+	public Integer getUserId() {
+		return userId;
+	}
+
+
+
+
+
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
+
+
+
+
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+
+
+
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+
+
+
+
+	public String getFileName() {
+		return fileName;
+	}
+
+
+
+
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+
+
+
+
+	public Double getFileSize() {
+		return fileSize;
+	}
+
+
+
+
+
+	public void setFileSize(Double fileSize) {
+		this.fileSize = fileSize;
+	}
+
+
+
+
+
+	public Integer getFileStatus() {
+		return fileStatus;
+	}
+
+
+
+
+
+	public void setFileStatus(Integer fileStatus) {
+		this.fileStatus = fileStatus;
+	}
+
+
+
+
+
+	public Integer getFileType() {
+		return fileType;
+	}
+
+
+
+
+
+	public void setFileType(Integer fileType) {
+		this.fileType = fileType;
+	}
+
+
+
+
+
+	public Timestamp getUploadTime() {
+		return uploadTime;
+	}
+
+
+
+
+
+	public void setUploadTime(Timestamp uploadTime) {
+		this.uploadTime = uploadTime;
+	}
+
+
+
+
+
+	public Integer getFileParentPath() {
+		return folderId;
+	}
+
+
+
+
+
+	public void setFileParentPath(Integer folderId) {
+		this.folderId = folderId;
+	}
+
+
+
+
+
+	public String getFileTransformPDF() {
+		return fileTransformPDF;
+	}
+
+
+
+
+
+	public void setFileTransformPDF(String fileTransformPDF) {
+		this.fileTransformPDF = fileTransformPDF;
+	}
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "FileInfo [fileId=" + fileId + ", userId=" + userId
+				+ ", filePath=" + filePath + ", fileName=" + fileName
+				+ ", fileSize=" + fileSize + ", fileStatus=" + fileStatus
+				+ ", fileType=" + fileType + ", uploadTime=" + uploadTime
+				+ ", folderId=" + folderId + ", fileTransformPDF="
+				+ fileTransformPDF + "]";
+	}
+	
+	
+	
+	
+	
+}

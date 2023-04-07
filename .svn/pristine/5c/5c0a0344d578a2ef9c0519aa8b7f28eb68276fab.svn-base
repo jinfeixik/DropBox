@@ -1,0 +1,65 @@
+package com.qst.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.qst.service.RecycleInfoService;
+
+@Controller
+public class RecycleController {
+	@Autowired
+	RecycleInfoService recycleInfoService;
+
+	/**
+	 * function:把文件移入回收站
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("moveToRecycle.form")
+	public String moveToRecycle() {
+		int fileId = 1;
+		recycleInfoService.moveToRecycle(fileId);
+
+		return "index";
+	}
+	
+	/**
+	 * function:把文件从回收站移出
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("moveOutOfRecycle.form")
+	public String moveOutOfRecycle() {
+		int fileId = 1;
+		recycleInfoService.moveToRecycle(fileId);
+
+		return "index";
+	}
+	
+	/**
+	 * function:删除回收站里的某个文件
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("deleteRecycle.form")
+	public String deleteRecycle() {
+		int fileId = 1;
+		recycleInfoService.deleteRecycle(fileId);
+
+		return "index";
+	}
+	
+	/**
+	 * function:获取回收站里的所有文件
+	 * @param fileId
+	 * @return recycle
+	 */
+	@RequestMapping("getAllRecycle.form")
+	public String getAllRecycle() {
+		recycleInfoService.getAllRecycle();
+
+		return "index";
+	}
+
+}

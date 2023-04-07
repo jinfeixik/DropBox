@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.UserInfoMapper">
+
+	<resultMap type="com.qst.entity.UserInfo" id="userInfoMap001">
+		<id property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="userPassword" column="user_password" />
+		<result property="userEmail" column="user_email" />
+		<result property="userRegisterTime" column="user_registerTime" />
+		<result property="usedSpace" column="user_usedSpace" />
+		<result property="totalSpace" column="user_totalSpace" />
+		<result property="userAvatar" column="user_avatar" />
+
+	</resultMap>
+
+
+
+	<insert id="addUserInfo" parameterType="com.qst.entity.UserInfo">
+		insert into tb_user_info(user_name, user_password,user_email,
+		user_registerTime, user_usedSpace, user_totalSpace, user_avatar)
+		values(#{userName},#{userPassword},#{userEmail},#{userRegisterTime},
+		#{usedSpace}, #{totalSpace}, #{userAvatar})
+	</insert>
+
+    <!-- 根据用户id查找用户信息 -->
+	<select id="findUserInfoById" parameterType="int" resultMap="userInfoMap001">
+		select * from tb_user_info where user_id=#{no}
+	</select>
+
+
+	<select id="findUserInfoByName" parameterType="com.qst.entity.UserInfo"
+		resultMap="userInfoMap002">
+		select * from tb_user_info where user_name=#{userName} and
+		user_password=#{userPassword}
+	</select>
+	
+	<select id="findUserInfoByEmail" parameterType="String" resultMap="userInfoMap001">
+		select * from tb_user_info where user_email=#{userEmail}
+	</select>
+
+	<update id="updateUserUsedSize" parameterType="com.qst.entity.UserInfo">
+		update tb_user_info set user_usedSpace=#{usedSpace} where user_id =
+		#{userId}
+	</update>
+
+	<!-- 查找用户邮箱地址 -->
+	<select id="findUserEamil" parameterType="string" resultMap="userInfoMap001">
+		select * from tb_user_info where user_email=#{userEmail}
+	</select>
+
+	<!-- 根据用户名查找用户信息 -->
+	<select id="findUserName" parameterType="string" resultMap="userInfoMap001">
+		select * from tb_user_info where user_name=#{userName}
+	</select>
+
+	<!-- 一对一关联查询 -->
+	<resultMap type="com.qst.entity.UserInfo" id="userInfoMap002">
+		<id property="userId" column="user_id" />
+		<result property="userName" column="user_name" />
+		<result property="userPassword" column="user_password" />
+		<result property="userEmail" column="user_email" />
+		<result property="userRegisterTime" column="user_registerTime" />
+		<result property="usedSpace" column="user_usedSpace" />
+		<result property="totalSpace" column="user_totalSpace" />
+		<result property="userAvatar" column="user_avatar" />
+
+		<association property="userMemberInfo" column="user_id" javaType="com.qst.entity.MemberInfo">
+			<id property="memberId" column="member_id" />
+			<result property="userId" column="user_id" />
+			<result property="memberStatus" column="member_status" />
+			<result property="memberStartTime" column="member_startTime" />
+			<result property="memberEndTime" column="member_endTime" />
+		</association>
+	</resultMap>
+	
+	 <select id="findMemberById" parameterType="int" resultMap="userInfoMap002">  
+		select m.*,u.* from tb_user_info u join tb_member_info m on m.user_id= u.user_id where u.user_id =#{userId}
+    </select> 
+    
+    <!--   修改用户密码 -->
+    <update id="updatePwdByName" parameterType="com.qst.entity.UserInfo">
+       update tb_user_info set  user_password =#{userPassword} where user_name=#{userName}
+    </update>
+    
+    <!--  修改用户信息 -->
+    <update id="updateUserInfo" parameterType="com.qst.entity.UserInfo">
+       update tb_user_info set  user_avatar=#{userAvatar},user_name =#{userName},user_email=#{userEmail} where user_id=#{userId}
+    </update>
+    
+	
+    
+    <update id="updateUsers" parameterType="com.qst.entity.UserInfo" >
+        update tb_user_info set user_totalSpace=#{totalSpace} where user_id =#{userId}
+    </update>
+    
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,55 @@
+@CHARSET "UTF-8";
+.right_list{
+	width:95%;
+	height:30px;
+	border-bottom:1px solid #ebebeb;
+	padding:10px 30px 15px 20px;
+	
+}
+.right_list_img{
+	width:5%;
+	float:left;
+    text-align: center;
+	
+}
+.right_list_img img{
+	padding-top:5px;
+width:25px;
+height:25px;
+}
+.right_list_file_information_filename{
+	width:100%;
+}
+.right_list_file_information_filesize{
+	width:100%;
+	font-size:12px;
+	color: #999999;
+}
+.right_list_file_information{
+	float:left;
+	width:45%;
+}
+.right_list_file_time{
+	float:left;
+	wdith:15%;
+	height:100%;
+	padding:10px;		
+}
+.right_list_flag{
+	float:left;
+	width:30%;
+	height:100%;
+	padding-left:55px;
+	padding:10px;	
+}
+.right_list_file_time font{
+	color: #999;
+	font-size: 14px;
+}
+.right_list_flag font{
+	color: #999;
+	font-size: 14px;
+}
+.right_list_flag img{
+	
+}

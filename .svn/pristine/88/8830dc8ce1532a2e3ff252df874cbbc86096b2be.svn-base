@@ -1,0 +1,41 @@
+package com.qst.service;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.qst.entity.FileInfo;
+import com.qst.entity.FolderInfo;
+
+/**
+ * 
+ * @author 李阳liyang
+ * @date 2019-8-29上午10:44:46
+ * @version v1.0
+ */
+
+public interface FindAllFileService {
+	
+	/**
+	 * 
+	 * @param fileType
+	 * 查询该相应类型的文件
+	 */
+	
+    public List<FileInfo> findFileType(int fileType);
+	
+    /**
+     * 
+     * @param userId
+     * 查询该用户所有文件
+     */
+	public List<FileInfo> findFile(HttpServletRequest request);
+	
+	
+	public List<FileInfo> findFile(FileInfo fileInfo);
+	
+	public List<FileInfo> findFile1(HttpServletRequest request);
+	
+	public double findVolume(HttpServletRequest request);
+	
+}

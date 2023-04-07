@@ -1,0 +1,11 @@
+package com.qst.dao;
+
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-28下午3:34:00
+ * @version v1.0
+ * 文件管理
+ */
+public interface FileInfoMapper {
+
+}

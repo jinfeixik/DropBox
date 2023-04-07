@@ -1,0 +1,736 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>所有文件</title>
+<link rel="stylesheet" href="css/common.css" type="text/css" />
+<link rel="stylesheet" href="css/index.css" type="text/css" />
+<link rel="stylesheet" href="css/lajixiang.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="page/base.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet" href="page/pageGroup.css" type="text/css"
+	media="screen" />
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<script type="text/javascript" language="javascript">
+	function display() {
+		document.getElementById("box").style.display = "block";
+	}
+
+	function disappear() {
+		document.getElementById("box").style.display = "none";
+	}
+</script>
+</head>
+
+<body>
+	<form action="" name="form1" id="form1" method="post"
+		enctype="multipart/form-data">
+		<div class="nav">
+			<div class="nav cl">
+				<div class="nav_z z" style="margin-top: 8px;">
+					<img src="images/logo2.png">
+				</div>
+
+				<div class="nav_st z" style="margin-top: 7px;">
+					
+				</div>
+
+				<div class="nav_st z" style="margin-left: 90px;">
+					<input type="text" onkeyup="Search()" id="search" name="search" placeholder="搜索.."
+						class="seafch-input">
+				</div>
+
+				<div class="nav_y y">
+					<a href="http://www.bootstrapmb.com/">关于我们</a> <span>丨</span> <a
+						href="">联系我们</a>
+				</div>
+				<div class="userNumber y" style="margin-left: -30px;">
+
+					<div class="dropdown">
+						<button type="button" class="btn dropdown-toggle"
+							id="dropdownMenu111" data-toggle="dropdown" style="margin-top:15px">
+							<img src="images/timg.jpg" class="touxiang" />&nbsp;&nbsp;&nbsp;
+							<font size="3" color="#009688"
+								style="font-family: KaiTi_GB2312  ;">用户名</font>&nbsp;&nbsp;&nbsp;
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu"
+							aria-labelledby="dropdownMenu111" style="border-radius: 10%;">
+							<li role="presentation" style="margin-left: 20px;"><a
+								role="menuitem" tabindex="-1" href="#">
+									<div class="col-md-4">
+										<img src="images/timg.jpg" class="touxiang1"
+											style="margin-top: 0px;margin-left: -20px;" />&nbsp;&nbsp;&nbsp;
+									</div>
+									<div class="col-md-8" style="margin-top: 5px;">
+										<font size="3" color="#009688">用户名</font>&nbsp;&nbsp;&nbsp;<br />
+										<font size="2" color="#000" style="margin-top: -40px;">会员等级</font>&nbsp;&nbsp;&nbsp;
+									</div> </a>
+							</li>
+							<li role="presentation"><a role="menuitem" tabindex="-1"
+								href="#"></a>
+							</li>
+							<li role="presentation" class="divider"></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1"
+								href="#">个人中心</a>
+							</li>
+							<li role="presentation"><a role="menuitem" tabindex="-1"
+								href="#">退出</a>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+		<!--顶部结束-->
+		<!--菜单-->
+		<div class="left-menu">
+			<div class="left-menu-top">
+				<a href="listAllFile.form">
+					<div id="left-small" class="cruent">
+						<div class="left-menu-top-small1">
+							<span class="glyphicon glyphicon-file"
+								style="color: rgb(97, 154, 251);">&nbsp;全部文件</span>
+						</div>
+					</div> </a> <a href="javascript:void(0)">
+					<div id="left-small">
+						<div id="photo"  class="left-menu-top-small">图片</div>
+					</div> </a> <a href="javascript:void(0)">
+					<div id="left-small">
+						<div id="text"  class="left-menu-top-small">文档</div>
+					</div> </a> <a href="javascript:void(0)">
+					<div id="left-small">
+						<div id="video" class="left-menu-top-small">视频</div>
+					</div> </a> <a href="javascript:void(0)">
+					<div id="left-small">
+						<div id="music" class="left-menu-top-small">音乐</div>
+					</div> </a> <a href="javascript:void(0)">
+					<div id="left-small">
+						<div class="left-menu-top-small">其他</div>
+					</div> </a> <a href="javascript:void(0)">
+					<div id="left-small">
+						<div class="left-menu-top-small2">
+							<span class="glyphicon glyphicon-share"
+								style="color: rgb(97, 154, 251);">&nbsp;我的分享</span>
+						</div>
+					</div> </a> 
+					<a href="lajixiang.html">
+					<div id="left-small">
+						<div class="left-menu-top-small2">
+							<span class="glyphicon glyphicon-trash"
+								style="color: rgb(97, 154, 251);">&nbsp;回收站</span>
+						</div>
+					</div> 
+					</a> 
+					<a href="transferList.form">
+					<div id="left-small">
+						<div class="left-menu-top-small2">
+							<span class="glyphicon glyphicon-sort"
+								style="color: rgb(97, 154, 251);">&nbsp;传输列表</span>
+						</div>
+					</div> 
+					</a>
+			</div>
+
+			<div class="left-menu-four">
+				<div class="left-menu-four-small">
+					<div class="left-menu-four-small-new"></div>
+				</div>
+			</div>
+			<div class="contain_four">
+				<div class="contain_four_main">
+					<span>容量：</span> <span class="cont">5</span>GB；可用 <span class="use">2</span>GB
+				</div>
+				<div class="max_add">
+					<a href=""> <font color="blue">我要扩容</font> </a>
+				</div>
+
+			</div>
+		</div>
+
+	<!--菜单end-->
+	<!--菜单右边的iframe页面-->
+	
+	<div id="right-content" class="right-content"
+		style="margin-left: 240px;">
+		<div class="content">
+			<div id="page_content" style="margin-top: 0px;">
+			
+				<div class="zuijinTop cl"
+					style="margin-top: 50px;margin-left: 65px;">
+
+					<input type="hidden" name="parentId" value="0" id="parentId" >
+
+					<input type="hidden" name="folderId" value="0" id="folderId" >
+
+					<input type="file" id="btn-upload_file"  onchange="fileUpload();"  name="files" style="display:none"  multiple="multiple">
+					<button type="button" class="btn btn-default"  onclick="selectFile();"
+						style="background: #0098ff;">
+						<span class="glyphicon glyphicon-upload"
+							style="color: white; font-size: 16px;"></span>&nbsp;&nbsp;<font
+							color="#FFFFFF">上传文件</font>
+					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-default" onclick="disp_prompt();">
+						<span class="glyphicon glyphicon-book"
+							style="color: rgb(0, 152, 255); font-size: 13px;"></span>&nbsp;&nbsp;<font
+							color="#0098ff">新建文件夹</font>
+					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-download-alt"
+								style="color: rgb(0, 152, 255); font-size: 13px;"></span>&nbsp;&nbsp;
+							<font color="#0098ff"><a href="" onclick="fun2()" id="b"
+								style="color:#0098ff">打包下载</a> </font>
+						</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" class="btn btn-default">
+						<span class="glyphicon glyphicon-trash"
+							style="color: rgb(0, 152, 255);font-size: 13px;"></span>&nbsp;&nbsp;
+					</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	
+						<button type="button" class="btn btn-default">
+							<span class="glyphicon glyphicon-trash"
+								style="color: rgb(0, 152, 255);font-size: 13px;"></span>&nbsp;&nbsp;
+
+							<font color="#0098ff">批量删除</font>
+						</button>
+					</div>
+
+					<div class="zuijinTitle cl" style="margin-top: -35px;">
+						<img src="images/select.png" data-all="no"
+							class="z allIcon allSelect" alt="">
+						<div class="z allSelect" style="margin-top: 10px;">全选</div>
+						<p class="y time" style="margin-top: 15px;margin-right: 100px;">
+							<span>创建时间</span>
+						</p>
+						<p class="y size" style="margin-top: 15px;margin-right: 20px;">文件大小</p>
+						<div style="margin-left: 10px;">
+						
+						<div class="dropdown" id="pai">
+							<a href="" id="dropdownMenu1" onmouseover="display()"
+								onmouseover="disappear()" data-toggle="dropdown" style="margin-left:70px">排序方式</a>
+							<ul class="dropdown-menu" role="menu" style="margin-left:100px"
+								aria-labelledby="dropdownMenu1" id="box" onmouseover="display()"
+								onmouseout="disappear()">
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="javascript:void(0)" id="size">按文件大小</a>
+								</li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="javascript:void(0)" id="type">按文件类型</a>
+								</li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="javascript:void(0)" id="name">按文件名称</a>
+								</li>
+								<li role="presentation"><a role="menuitem" tabindex="-1"
+									href="javascript:void(0)" id="time">按文件上传时间</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>			
+
+					 <!-- <input type="checkbox" name="test" value="a.xls">a.xls <a
+						href="downlode.form?filename=a.xls&fileId=1" id="a"><span
+						class="glyphicon glyphicon-download-alt"></span> </a><br /> <input
+						type="checkbox" name="test" value="dir.png">dir.png<br />
+					<input type="checkbox" name="test" value="excel01.png">excel01.png<br />
+
+
+                   	<input type="hidden" name="folderId" value="1" id="folderId" >
+  	                <div id="div_input" style="width:152px;height:22px;border:1px solid #369;">
+			        <span id="folderNameSpan" style="overflow: hidden;">12123aa</span>
+			        <input id="folderName" type="text" style="display:none;width:152px;height:22px;overflow: hidden;" name="folderInfoName" value="123">
+	                </div>  -->
+	                
+	               <div class="content cl" id="files">
+	               <div id="folder">
+	               <c:forEach items="${folderInfos}" var="folderInfo">
+							<div class="template cl" data-click="no">
+								<input type="hidden" name="folderId" value="${folderInfo.folderId}" id="folderId" >
+								<img src="images/select.png" class="z templateState" alt="">
+								<img src="images/wenjian.png" class="z iconImg" alt="">
+								<p class="z name" style="margin-top: 15px;">${folderInfo.folderName}</p>
+								<p class="y time" style="margin-top: 15px;"></p>
+								<p class="y size" style="margin-top: 15px;"></p>
+							</div>
+				  </c:forEach>
+				  </div>
+				   <div id="file">
+				   <c:forEach items="${fileInfos}" var="fileInfo">
+							<div class="template cl" data-click="no" >
+							    <input type="hidden" name="test" value="${fileInfo.fileName}">
+								<img src="images/select.png" class="z templateState" alt="">
+								<img src="images/icon1.png" class="z iconImg" alt="">
+								<p class="z nsame" style="margin-top: 15px;">${fileInfo.fileName}</p>
+								<a style="margin-left:0px;" href="listAllFile.form"><i class="fa fa-sign-out fa-lg fa-spin"></i></a>
+						        <a style="margin-left:800px;" href="downlode.form?filename=${fileInfo.fileName}&fileId=${fileInfo.fileId}" id="a"><span
+						        class="glyphicon glyphicon-download-alt" ></span></a>
+								<p class="y time" style="margin-top: 15px;">${fileInfo.uploadTime}</p>
+								<p class="y size" style="margin-top: 15px;">${fileInfo.fileSize}M</p>
+							</div>
+				  </c:forEach>
+				  </div>
+
+				</div> 
+	                
+
+					<!-- <div class="content cl">
+						  <div class="template cl " data-click="no">
+							<img src="images/select.png" class="z templateState" alt="" >
+							<img src="images/icon1.png" class="z iconImg" alt="">
+							<p class="z name" style="margin-top: 15px;">劳动合同</p>
+							<input type="checkbox" name="test" value="a.xls" style="display:none;">
+							<p class="y time" style="margin-top: 15px;">
+								<span class="glyphicon glyphicon-trash"
+									style="color: rgb(0, 152, 255); font-size: 11px;"></span>
+							</p>
+							<p class="y time" style="margin-top: 15px;">
+								<span class="glyphicon glyphicon-share-alt"
+									style="color: rgb(0, 152, 255); font-size: 11px;"></span>
+							</p>
+							<p class="y time" style="margin-top: 15px;">
+								<span class="glyphicon glyphicon-open"
+									style="color: rgb(0, 152, 255); font-size: 11px;"></span>
+							</p>
+							<p class="y time" style="margin-top: 15px;">
+								2016-02-14<span>12:11:01</span>
+							</p>
+							<p class="y size" style="margin-top: 17px;">20.1K</p>
+						</div>
+						
+						
+						
+						
+						<div class="template cl" data-click="no">
+							<img src="images/select.png" class="z templateState" alt="">
+							<img src="images/icon2.png" class="z iconImg" alt="">
+							<input type="checkbox" name="test" value="dir.png" style="display:none;">
+							<p class="z name" style="margin-top: 15px;">劳动合同</p>
+							<p class="y time" style="margin-top: 15px;">
+								2016-02-14<span>12:11:01</span>
+							</p>
+							<p class="y size" style="margin-top: 15px;">20.1K</p>
+						</div>
+						
+						
+						
+						
+						<div class="template cl" data-click="no">
+							<img src="images/select.png" class="z templateState" alt="">
+							<img src="images/icon3.png" class="z iconImg" alt="">
+							<input type="checkbox" name="test" value="excel01.png" style="display:none;">
+							<p class="z name" style="margin-top: 15px;">劳动合同</p>
+							<p class="y time" style="margin-top: 15px;">
+								2016-02-14<span>12:11:01</span>
+							</p>
+							<p class="y size" style="margin-top: 15px;">20.1K</p>
+						</div>
+
+					</div> -->
+
+					<div class="huanyuanBox" style="display:none">
+						<div class="huanyuanTitle">
+							<span>还原文件</span>
+						</div>
+						<div class="close">+</div>
+						<div class="content">
+							<img src="images/selectC.png" class="hintIcon" alt="">
+							<p class="p1">确定要还原选中的文件吗？</p>
+							<p class="p2">文件将还原至删除前所在的文件夹</p>
+						</div>
+						<input type="button" class="y quxiao" value="取消"> <input
+							type="button" class="y ok" value="确定">
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/layer.js"></script>
+	<script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+	<script>
+		function fun2() {
+			var allFileName = "";
+			obj = document.getElementsByName("test");
+			check_val = [];
+			for (k in obj) {
+				if (obj[k].checked) {
+					allFileName += obj[k].value + " ";
+				}
+			}
+			var s = $('#b').attr("href", "zip.form?filename=" + allFileName);
+
+		}
+
+		$(".sousouInput").blur(function() {
+			$(".sousuo").css({
+				border : "1px solid #ccc"
+			});
+			$(".ss1").removeClass("focusState");
+		});
+		$(".sousouInput").focus(function() {
+			$(".sousuo").css({
+				border : "1px solid #9cf"
+			});
+			$(".ss1").addClass("focusState");
+		});
+		$(".zuijinTitle").css({
+			width : $(window).width() - 237
+		});
+
+		/******点击全选*****/
+
+		$(".allSelect").click(function() {
+			if ($(".allIcon").attr("data-all") == "no") {
+				$(".template").attr("data-click", "yes");
+				$(".templateState").attr("src", "images/selectC.png");
+				$(".allIcon").attr("data-all", "yes");
+				$(".allIcon").attr("src", "images/selectC.png");
+			} else {
+				$(".template").attr("data-click", "no");
+				$(".templateState").attr("src", "images/select.png");
+				$(".allIcon").attr("data-all", "no");
+				$(".allIcon").attr("src", "images/select.png");
+			}
+		});
+
+		bindClick();
+		/*********某一个点击*****/
+		function bindClick() {
+			$(".content .template").each(
+					function(e) {
+						$(this).click(
+								function() {
+									if ($(this).attr("data-click") == "yes") {
+										$(".allIcon").attr("data-all", "no");
+										$(".allIcon").attr("src",
+												"images/select.png");
+										$(this).attr("data-click", "no");
+										$(this).find(".templateState").attr(
+												"src", "images/select.png");
+									} else {
+										$(this).attr("data-click", "yes");
+										$(this).find(".templateState").attr(
+												"src", "images/selectC.png");
+									}
+								});
+					});
+		}
+		$(".huanyuan").click(function() {
+			$(".huanyuanBox").show();
+		});
+		$(".quxiao,.ok,.close").click(function() {
+			$(".huanyuanBox").hide();
+		});
+	</script>
+
+
+	<script type="text/javascript">
+  		function selectFile() {
+  			console.log("进入");
+  			$("#btn-upload_file").trigger("click");
+    		console.log("进入成功");
+    		/* $("#form1").attr("action","upload.form");
+    		$("#form1").submit();  */
+		}
+		
+	function fileUpload(){
+			console.log("开始上传");
+			alert("开始上传");
+			$("#form1").attr("action","upload.form");
+    		$("#form1").submit(); 
+		}  
+		
+function disp_prompt(){
+     var name=prompt("输入文件夹内容","");
+     if (name!=null && name!="") {
+         $("#form1").attr("action","addFolder.form?folderName="+name);
+      $("#form1").submit(); 
+     } else {
+      alert("文件夹名不能为空");
+      console.log("文件夹名不能为空");
+     }
+ }   
+				
+  </script>
+ 
+
+ <script type="text/javascript">
+  			
+  			var folderId;
+  			var folderInfoName;
+			$(document).ready(function() {
+		
+				$("#div_input").dblclick(function() {
+					// alert(0);
+					//  $(this).hide();
+					$("#folderName").val($("span").html());
+					$("#folderNameSpan").hide();
+					$("#folderName").show().focus();
+				});
+				$("#folderName").blur(function() {
+					$("#folderNameSpan").html($(this).val()).show();
+					folderInfoName = $("#folderName").val()
+					
+					$("#folderName").hide();
+					folderId = $("#folderId").val();
+				
+					
+					$.ajax({
+						data:{folderId:folderId, folderInfoName:folderInfoName},
+						url:"updateFolderName.form",
+						success:function(result){
+							alert("修改成功");
+					}}); 
+					
+					
+				});
+				});
+	</script> 
+	
+	<!-- 分类及搜索 -->
+	<script type="text/javascript">
+	 $("#size").click(function(){
+	    $("#size").val(1);
+	    $("#type").val("");
+	    $("#name").val("");
+	    $("#time").val("");
+	    Search();
+	 });
+	 $("#type").click(function(){
+	    $("#type").val(1);
+	    $("#size").val("");
+	    $("#name").val("");
+	    $("#time").val("");
+	    Search();
+	 });
+	 $("#name").click(function(){
+	    $("#name").val(1);
+	    $("#size").val("");
+	    $("#type").val("");
+	    $("#time").val("");
+	    Search();
+	 });
+	 $("#time").click(function(){
+	    $("#time").val(1);
+	    $("#size").val("");
+	    $("#type").val("");
+	    $("#name").val("");
+	    Search();
+	 });
+	
+   $("#video").click(function(){
+   $.ajax({
+	         url:"listFile.form",
+	         data:{"flag":1},
+             type:"post",
+             contentType: "application/x-www-form-urlencoded",
+             dataType:"json",
+	         success:function(data){
+	         //console.log(data);
+	         $("#files").empty();
+	         /* $("#pai").empty();  */
+	          $("#dropdownMenu1").css("visibility","hidden"); 
+	         var html = ''; 
+             $.each(data, function(index,file){
+             var date1 = new Date(file["uploadTime"]);
+             var date2=date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8); 
+             //alert(date2);
+             html +='<div class="template cl" data-click="no">'+
+								'<img src="images/select.png" class="z templateState" alt="">'+
+								'<img src="images/icon1.png" class="z iconImg" alt="">'+
+								'<p class="z name" style="margin-top: 15px;">'+file["fileName"]+'</p>'+
+								'<p class="y time" style="margin-top: 15px;">'+date2+'</p>'+
+								'<p class="y size" style="margin-top: 15px;">'+file["fileSize"]+'M'+'</p>'+
+							'</div>';
+                        });
+                $("#files").html(html);                  
+	         },
+             });
+   
+   
+   });
+   
+    $("#music").click(function(){
+   $.ajax({
+	         url:"listFile.form",
+	         data:{"flag":2},
+             type:"post",
+             contentType: "application/x-www-form-urlencoded",
+             dataType:"json",
+	         success:function(data){
+	         //console.log(data);
+	         $("#files").empty();
+	         $("#dropdownMenu1").css("visibility","hidden"); 
+	         var html = ''; 
+             $.each(data, function(index,file){
+             var date1 = new Date(file["uploadTime"]);
+             var date2=date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8); 
+             //alert(date2);
+             html += '<div class="template cl" data-click="no">'+
+								'<img src="images/select.png" class="z templateState" alt="">'+
+								'<img src="images/icon1.png" class="z iconImg" alt="">'+
+								'<p class="z name" style="margin-top: 15px;">'+file["fileName"]+'</p>'+
+								'<p class="y time" style="margin-top: 15px;">'+date2+'</p>'+
+								'<p class="y size" style="margin-top: 15px;">'+file["fileSize"]+'M'+'</p>'+
+							'</div>';
+                        });
+                $("#files").html(html);
+                        
+	         },
+             });
+   
+   
+   });
+   
+    $("#text").click(function(){
+   $.ajax({
+	         url:"listFile.form",
+	         data:{"flag":3},
+             type:"post",
+             contentType: "application/x-www-form-urlencoded",
+             dataType:"json",
+	         success:function(data){
+	        // console.log(data);
+	         $("#files").empty();
+	         $("#dropdownMenu1").css("visibility","hidden");  
+	         var html = ''; 
+             $.each(data, function(index,file){
+             var date1 = new Date(file["uploadTime"]);
+             var date2=date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8); 
+             //alert(date2);
+             html += '<div class="template cl" data-click="no">'+
+								'<img src="images/select.png" class="z templateState" alt="">'+
+								'<img src="images/icon1.png" class="z iconImg" alt="">'+
+								'<p class="z name" style="margin-top: 15px;">'+file["fileName"]+'</p>'+
+								'<p class="y time" style="margin-top: 15px;">'+date2+'</p>'+
+								'<p class="y size" style="margin-top: 15px;">'+file["fileSize"]+'M'+'</p>'+
+							'</div>';
+                        });
+                $("#files").html(html);
+                        
+	         },
+             });
+   
+   
+   });
+   
+   $("#photo").click(function(){
+   $.ajax({
+	         url:"listFile.form",
+	         data:{"flag":4},
+             type:"post",
+             contentType: "application/x-www-form-urlencoded",
+             dataType:"json",
+	         success:function(data){
+	         //console.log(data);
+	         $("#files").empty();
+	         $("#dropdownMenu1").css("visibility","hidden"); 
+	         var html = ''; 
+             $.each(data, function(index,file){
+             var date1 = new Date(file["uploadTime"]);
+             var date2=date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8); 
+             //alert(date2);
+             html += '<div class="template cl" data-click="no">'+
+								'<img src="images/select.png" class="z templateState" alt="">'+
+								'<img src="images/icon1.png" class="z iconImg" alt="">'+
+								'<p class="z name" style="margin-top: 15px;">'+file["fileName"]+'</p>'+
+								'<p class="y time" style="margin-top: 15px;">'+date2+'</p>'+
+								'<p class="y size" style="margin-top: 15px;">'+file["fileSize"]+'M'+'</p>'+
+							'</div>';
+                        });
+                $("#files").html(html);
+                        
+	         },
+             });
+   
+   
+   });
+   
+   function Search(){
+         var sea = $("#search").val();
+        // alert(sea);
+         //alert($("#size").val());
+         $.ajax({
+	         url:"searchFile.form",
+	         data:{"sea":sea,"size":$("#size").val(),"type":$("#type").val(),"name":$("#name").val(),"time":$("#time").val()},
+             type:"post",
+             contentType: "application/x-www-form-urlencoded",
+             dataType:"json",
+	         success:function(data){
+	         console.log(data);
+	         var html = ''; 
+             $.each(data, function(index,file){
+             var date1 = new Date(file["uploadTime"]);
+             var date2=date1.toLocaleDateString().replace(/\//g, "-") + " " + date1.toTimeString().substr(0, 8); 
+             //alert(date2);
+             html += '<div class="template cl" data-click="no">'+
+								'<img src="images/select.png" class="z templateState" alt="">'+
+								'<img src="images/icon1.png" class="z iconImg" alt="">'+
+								'<p class="z name" style="margin-top: 15px;">'+file["fileName"]+'</p>'+
+								'<p class="y time" style="margin-top: 15px;">'+date2+'</p>'+
+								'<p class="y size" style="margin-top: 15px;">'+file["fileSize"]+'M'+'</p>'+
+							'</div>';
+                        });
+               
+                $("#file").empty(); 
+                $("#file").html(html);
+                        
+	         },
+             });
+             
+        $.ajax({
+	         url:"searchFolder.form",
+	         data:{"sea":sea,"size":$("#size").val(),"type":$("#type").val(),"name":$("#name").val(),"time":$("#time").val()},
+             type:"post",
+             contentType: "application/x-www-form-urlencoded",
+             dataType:"json",
+	         success:function(data){
+	         console.log(data);
+	         //$("#folder").empty(); 
+	         var html = ''; 
+             $.each(data, function(index,folder){
+             //alert(date2);
+             html += '<div class="template cl" data-click="no">'+
+								'<img src="images/select.png" class="z templateState" alt="">'+
+								'<img src="images/wenjian.png" class="z iconImg" alt="">'+
+								'<p class="z name" style="margin-top: 15px;">'+folder["folderName"]+'</p>'+
+							'</div>';
+                        });
+               
+                
+                $("#folder").empty(); 
+                $("#folder").html(html);
+	         },
+	        
+             }); 
+   
+         
+     }
+   
+   
+       </script>  
+
+  
+
+
+
+<body>
+</html>

@@ -1,0 +1,62 @@
+package com.qst.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.qst.entity.FolderInfo;
+import com.qst.entity.UserInfo;
+import com.qst.service.FolderInfoService;
+
+@Controller
+public class FolderController {
+	
+	@Autowired
+	FolderInfoService folderService;
+	
+	/**
+	 * @param folderName
+	 * @param parentId
+	 * @param request
+	 * @return
+	 * 添加文件夹
+	 */
+	@RequestMapping("addFolder.form")
+	public String addFolder(String folderName, int parentId, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserInfo userInfo = (UserInfo) session.getAttribute("user");
+		System.out.println(userInfo.toString());
+		FolderInfo folderInfo = new FolderInfo();
+		folderInfo.setFolderName(folderName);
+		folderInfo.setFolderParentFolderId(parentId);
+		folderInfo.setUserId(userInfo.getUserId());
+		
+		folderService.addFolderInfo(folderInfo);
+		return "index";
+	}
+	
+	
+	/**
+	 * @param folderInfo
+	 * @param folderInfoName
+	 * @return
+	 * 修改文件夹名字
+	 */
+	@RequestMapping("updateFolderName.form")
+	@ResponseBody
+	public String updateFolderName(FolderInfo folderInfo, String folderInfoName) {
+		
+		System.out.println("文件夹信息" +folderInfo.toString());
+		folderInfo.setFolderName(folderInfoName);
+		System.out.println(folderInfo.toString());
+		folderService.updateFolderName(folderInfo);
+		return "Y";
+	}
+	
+	
+	
+}

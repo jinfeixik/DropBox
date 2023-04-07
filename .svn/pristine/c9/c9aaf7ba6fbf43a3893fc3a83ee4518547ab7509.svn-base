@@ -1,0 +1,27 @@
+package com.qst.service;
+
+import com.qst.entity.FolderInfo;
+
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-29下午10:22:27
+ * @version v1.0
+ * 文件夹管理
+ */
+public interface FolderInfoService {
+
+	/**
+	 * @param folderInfo
+	 *添加文件夹
+	 */
+	public void addFolderInfo(FolderInfo folderInfo);
+	
+	/**
+	 * @param folderInfo
+	 * 修改文件夹名字
+	 */
+	public void updateFolderName(FolderInfo folderInfo);
+	
+	
+	
+}

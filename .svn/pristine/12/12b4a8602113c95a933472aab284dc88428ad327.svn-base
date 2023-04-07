@@ -1,0 +1,137 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<base href="<%=basePath%>">
+
+<title>账号密码登录</title>
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="This is my page">
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<style>
+.leader {
+	width: 1500px;
+	height: 60px;
+	background: #f2f2f2 no-repeat 0px;
+}
+
+.title {
+	margin-left: 70px;
+}
+
+.header {
+	width: auto;
+	height: auto;
+	margin-left: 50px;
+	margin-top: 140px;
+}
+
+.light {
+	width: 450px;
+	height: 450px;
+	border: 1px solid #CED4DA;
+	margin-top: 60px;
+	margin-left: 400px;
+	border-radius: 5%;
+}
+
+.light legend {
+	margin-left: 140px;
+	padding: 0 10px;
+	font-size: 20px;
+	font-weight: 300;
+	margin-top: 40px;
+}
+
+.form-group {
+	margin-left: 70px;
+}
+</style>
+
+</head>
+
+<body>
+
+	<div class="leader">
+		<div class="title">
+			<font size="6" color="#FF33FF" style="font-family: STHupo;">9</font>
+			<font size="6" color="#CC33FF" style="font-family: STHupo;">0</font>
+			<font size="6" color="#9999FF" style="font-family: STHupo;">网</font>
+			<font size="6" color="#6699FF" style="font-family: STHupo;">盘</font>
+			<font size="4" color="#FF6666" style="font-family: STLiti;">不一样的</font>
+			<font size="5" color="#FF3366" style="font-family: STLiti;">云</font>
+			<font size="4" color="#FF0066" style="font-family: STLiti;">存储</font>
+
+			<!-- <font size="3" color="#000" style="margin-left: 790px;"><a
+				href="">登录</a>
+			</font> <font size="3" color="#000" style="margin-left: 60px;"><a
+				href="">注册</a>
+			</font> -->
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3 column">
+				<img src="img/register02.png"
+					style="margin-top: 100px;margin-left: -50px;" />
+			</div>
+			<div class="col-md-9 column">
+				<div class="light">
+					<legend>
+						<font size="5" color="#007bff">账号密码登录</font>
+					</legend>
+					<form class="form-horizontal" action="login.form" method="post" style="margin-top: 30px;">
+						<div class="form-group" style="margin-top: 50px;">
+							<div class="col-sm-10">
+								<input type="text" class="form-control" id="inputPassword3" name="userName"
+									placeholder="用户名" />
+							</div>
+						</div>
+
+						<div class="form-group" style="margin-top: 10px;">
+							<div class="col-sm-10">
+								<input type="password" class="form-control" id="inputPassword3" name="userPassword"
+									placeholder="密码" />
+							</div>
+						</div>
+
+						<div class="form-group" style="margin-top: 20px;">
+							<div class="col-sm-10">
+								<font size="2"><a href="">忘记密码?</a>
+								</font>
+							</div>
+						</div>
+
+						<div class="form-group" style="margin-top: 20px;">
+							<div class="col-sm-offset-2 col-sm-10">
+								<input type="submit" class="btn btn-primary"
+									style="width: 285px;" value="登录"/>
+							</div>
+						</div>
+						<div class="form-group" style="margin-top: 40px;">
+							<div class="col-sm-offset-2 col-sm-10">
+								<font size="3"><a href="emailLogin.jsp">邮箱快捷登录></a>
+								</font><font size="3"><a href="RegisterTest.jsp" style="margin-left: 110px;">立即注册</a>
+								</font>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

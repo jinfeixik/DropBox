@@ -1,0 +1,45 @@
+package com.qst.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.qst.entity.FileInfo;
+import com.qst.entity.FileTransfer;
+import com.qst.service.FileInfoService;
+import com.qst.service.FileTransferService;
+import com.qst.util.TimeUtil;
+
+/**
+ * @author 赵海庭（zhaohaiting）
+ * @date 2019-8-30下午4:53:22
+ * @version v1.0
+ */
+@Service
+public class FileTransferServiceImpl implements FileTransferService{
+	@Autowired
+	FileInfoService fileInfoService;
+	
+	@Override
+	public List<FileTransfer> startValue(String[] fileId) {
+		List<FileTransfer>  fileTransfers = new ArrayList<FileTransfer>();
+		for(String fi:fileId){
+			FileTransfer ft=new FileTransfer();
+			FileInfo finfo=fileInfoService.findFileInfo(fi);
+			ft.setFileId(finfo.getFileId());
+			ft.setTransferFileSize(finfo.getFileSize());
+			ft.setTransferProgress(0);
+			ft.setTransferStatus(0);
+			ft.setTransferTime(TimeUtil.time2Timestamp());
+			ft.setTransferUploadaAndDownloadFlag(1);
+			ft.setUserId(1);//暂设userID为1 后期从session中获取
+			fileTransfers.add(ft);
+		}
+		return fileTransfers;
+	}
+
+	
+
+}

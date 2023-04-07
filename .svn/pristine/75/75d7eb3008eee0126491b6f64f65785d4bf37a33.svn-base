@@ -1,0 +1,189 @@
+package com.qst.controller;
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.qst.dao.FileInfoMapper;
+import com.qst.dao.FolderInfoMapper;
+import com.qst.entity.FileInfo;
+import com.qst.entity.FolderInfo;
+import com.qst.service.FindAllFileService;
+import com.qst.service.FindAllFolderService;
+
+/**
+ * 
+ * @author 李阳liyang
+ * @date 2019-8-29下午9:28:53
+ * @version v1.0
+ */
+
+@Controller
+public class FindAllFileController {
+	
+	@Autowired
+	FindAllFileService fileService;
+	
+	@Autowired
+	FindAllFolderService folderService;
+	
+	@Autowired
+	FileInfoMapper fileInfoDao;
+	
+	@Autowired
+	FolderInfoMapper folderInfoDao;
+	
+	
+	
+	//int flag;
+	
+	
+	@RequestMapping("listAllFile.form")
+	public String ListAllFile(ModelMap map,HttpServletRequest request){
+		
+		List<FolderInfo> folderInfos = folderService.findFolder(request);
+		
+		List<FileInfo> fileInfos=fileService.findFile(request);
+		
+		map.addAttribute("folderInfos", folderInfos);
+		
+		map.addAttribute("fileInfos", fileInfos);
+
+		return "listAllFile";
+	}
+	
+	@RequestMapping(value="listFile.form",method = RequestMethod.POST)
+	@ResponseBody
+    public List<FileInfo> FindTypeInfo(ModelMap map,HttpServletRequest request){
+    	
+    	List<FileInfo> fileInfos=fileService.findFile1(request);
+    	
+    	System.out.println(request.getParameter("flag"));
+    	
+    	int flag=Integer.parseInt(request.getParameter("flag"));
+    	
+    	System.out.println("flag:"+flag);
+    	
+    	List<FileInfo> fileInfos1=new ArrayList<FileInfo>(); 
+    	
+        for(FileInfo fileInfo:fileInfos){
+			
+			if(fileInfo.getFileType()==flag){
+				
+				fileInfos1.add(fileInfo);
+			
+			}
+			
+	    }
+        
+        System.out.println("分类后："+fileInfos1);
+        
+        //fileInfos1.get(0).setFileName("小芳");
+        
+        //map.addAttribute("fileInfo", fileInfos1);
+        
+    	return   fileInfos1;
+    }
+	
+	@RequestMapping("listFolder.form")
+	public String ListFolderFile(ModelMap map,HttpServletRequest request){
+		
+		int userId=1;
+			
+		request.getSession().setAttribute("userId", userId);
+		
+		userId=(Integer) request.getSession().getAttribute("userId");
+		
+		System.out.println("userId为："+userId);
+		
+		System.out.println(request.getParameter("folderId"));
+		
+		int folderId=Integer.parseInt(request.getParameter("folderId"));
+		
+		FileInfo fileInfo=new FileInfo();
+		
+		fileInfo.setFolderId(folderId);
+		
+		fileInfo.setUserId(userId);
+		
+		FolderInfo folderInfo=new FolderInfo();
+		
+		folderInfo.setFolderParentFolderId(folderId);
+		
+		folderInfo.setUserId(userId);
+		
+		List<FileInfo> fileInfos=fileInfoDao.findAllFile(fileInfo);
+		
+		List<FolderInfo> folderInfos=folderInfoDao.findAllFolder(folderInfo);
+		
+        map.addAttribute("folderInfos", folderInfos);
+		
+		map.addAttribute("fileInfos", fileInfos);
+		
+		System.out.println(folderId+"下文件夹："+folderInfos);
+		
+		System.out.println(folderId+"下文件："+fileInfos);
+		
+		return "listAllFile";
+	}
+	
+	@RequestMapping("search.form")
+	public String SearchFileFolder(ModelMap map,HttpServletRequest request){
+		int userId=1;
+		
+		request.getSession().setAttribute("userId", userId);
+		
+		userId=(Integer) request.getSession().getAttribute("userId");
+		
+		FileInfo fileInfo=new FileInfo();
+		
+		fileInfo.setUserId(userId);
+		
+		//fileInfo.setFileName1(request.getParameter("fileName1"));
+		
+		fileInfo.setFileName(request.getParameter("fileName"));
+			
+		//fileInfo.setFileType(Integer.parseInt(request.getParameter("fileType")));				
+		
+		//fileInfo.setFileSize(Double.parseDouble(request.getParameter("fileSize")));
+			
+		//fileInfo.setUploadTime(Timestamp.valueOf(request.getParameter("uploadTime")));
+		
+		FolderInfo folderInfo=new FolderInfo();
+		
+		folderInfo.setUserId(userId);
+		
+		folderInfo.setFolderName(request.getParameter("fileName"));
+		
+		//folderInfo.setFolderName1(request.getParameter("fileName1"));
+		
+        List<FileInfo> fileInfos=fileInfoDao.findFileBySearch(fileInfo);
+		
+		List<FolderInfo> folderInfos=folderInfoDao.findFolderBySearch(folderInfo);
+		
+        map.addAttribute("folderInfos", folderInfos);
+		
+		map.addAttribute("fileInfos", fileInfos);
+		
+		System.out.println("搜索后文件夹："+folderInfos);
+		
+		System.out.println("搜索后文件："+fileInfos);
+		
+		return "listAllFile";
+	}
+	
+	
+	
+	
+
+}

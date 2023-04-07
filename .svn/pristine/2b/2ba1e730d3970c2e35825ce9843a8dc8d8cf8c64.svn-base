@@ -1,0 +1,102 @@
+package com.qst.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.qst.dao.FileShareMapper;
+import com.qst.entity.FileShare;
+import com.qst.service.FileShareService;
+
+@Service
+public class FileShareServiceImpl implements FileShareService {
+	@Autowired
+	private FileShareMapper shareMapper;
+
+	/**
+	 * 添加一条分享记录
+	 */
+	@Override
+	@Transactional
+	public void addFileShare(FileShare fileShare) {
+		shareMapper.addFileShare(fileShare);
+	}
+
+	/**
+	 * 删除一条分享记录
+	 */
+	@Override
+	@Transactional
+	public void deleteFileShare(int fileId, int userId) {
+		FileShare fileShare = new FileShare();
+		fileShare.setFileId(fileId);
+		fileShare.setUserId(userId);
+		shareMapper.deleteFileShare(fileShare);
+	}
+
+	/**
+	 * 清空用户分享记录
+	 */
+	@Override
+	@Transactional
+	public void clearFileShare(int userId) {
+		shareMapper.clearFileShare(userId);
+	}
+
+	/**
+	 * 通过id获取用户一条分享记录
+	 */
+	@Override
+	public FileShare findFileShare(int fileId, int userId) {
+		FileShare fileShareP = new FileShare();
+		fileShareP.setFileId(fileId);
+		fileShareP.setUserId(userId);
+		FileShare fileShare = shareMapper.findFileShareById(fileShareP);
+		return fileShare;
+	}
+	/**
+	 * 通过外链获取用户一条分享记录
+	 */
+	@Override
+	public FileShare findFileShareByShareLink(String shareLink) {
+		FileShare fileShare = shareMapper.findFileShareByShareLink(shareLink);
+		//浏览次数加一
+		fileShare.setShareViewNumber(fileShare.getShareViewNumber()+1);
+		shareMapper.updateFileShareNumber(fileShare);
+		return fileShare;
+	}
+
+	/**
+	 * 获取用户所有分享记录
+	 */
+	@Override
+	public List<FileShare> findAllFileShare(int userId) {
+		List<FileShare> fileShares = shareMapper.findAllFileShare(userId);
+		System.out.println("用户id为" + userId + "的文件分享列表：");
+		for (FileShare fileShare : fileShares) {
+			System.out.println(fileShare.toString());
+		}
+		return fileShares;
+	}
+
+	/**
+	 * 修改分享文件的状态（是否加密）
+	 */
+	@Override
+	@Transactional
+	public void updateFileShareStatus(int fileId, int userId) {
+		FileShare fileShareP = new FileShare();
+		fileShareP.setFileId(fileId);
+		fileShareP.setUserId(userId);
+		FileShare fileShare = shareMapper.findFileShareById(fileShareP);
+		if (fileShare.getShareStatus() == 1) {
+			fileShare.setShareStatus(0);
+		} else {
+			fileShare.setShareStatus(1);
+		}
+		shareMapper.updateFileShareStatus(fileShare);
+	}
+
+}

@@ -1,0 +1,13 @@
+@CHARSET "UTF-8";
+.tab-list{
+width:23.5%;
+height:100%;
+background:#fff;
+border-right:2px solid #ebebeb;
+list-style: none;
+float:left;
+}
+.tab-content{
+	float:left;
+	width:76.5%;
+}

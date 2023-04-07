@@ -1,0 +1,72 @@
+package com.qst.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.qst.dao.FileInfoMapper;
+import com.qst.dao.RecycleInfoMapper;
+import com.qst.entity.RecycleInfo;
+import com.qst.service.RecycleInfoService;
+import com.qst.util.CurrentTimeUtil;
+
+@Service
+public class RecycleInfoServiceImpl implements RecycleInfoService{
+	@Autowired
+	private RecycleInfoMapper recycleMapper;
+	@Autowired
+	private FileInfoMapper fileMapper;
+	
+	/**
+	 * 把文件移入回收站
+	 */
+	@Override
+	@Transactional
+	public void moveToRecycle(int fileId) {
+		RecycleInfo recycle = new RecycleInfo();
+		recycle.setFileId(fileId);
+		recycle.setRecycleTime(CurrentTimeUtil.getCurrentTime());
+		recycleMapper.addRecycle(recycle);
+		
+		//更改文件状态（未完成）
+	}
+	
+	/**
+	 * 把文件移出回收站
+	 */
+	@Override
+	@Transactional
+	public void moveOutOfRecycle(int fileId) {
+		recycleMapper.deleteRecycle(fileId);
+		
+		//更改文件状态（未完成）
+	}
+	
+	/**
+	 * 删除回收站里的某个文件
+	 */
+	@Override
+	@Transactional
+	public void deleteRecycle(int fileId) {
+		recycleMapper.deleteRecycle(fileId);
+		
+		//删除文件（未完成）
+	}
+	
+	/**
+	 * 获取回收站里的所有文件
+	 */
+	@Override
+	@Transactional
+	public List<RecycleInfo> getAllRecycle() {
+		List<RecycleInfo>recycleInfos= recycleMapper.findAllRecycle();
+		for (RecycleInfo recycleInfo : recycleInfos) {
+			System.out.println(recycleInfo.toString());
+		}
+		
+		return recycleInfos;
+	}
+
+}

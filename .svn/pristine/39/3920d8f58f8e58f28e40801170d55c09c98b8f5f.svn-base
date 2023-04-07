@@ -1,0 +1,21 @@
+package com.qst.dao;
+
+import com.qst.entity.UserInfo;
+
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-28下午3:24:33
+ * @version v1.0
+ * 用户信息管理
+ */
+public interface UserInfoMapper {
+	
+	//添加一条用户信息
+	public void addUserInfo(UserInfo userInfo);
+
+	
+}
+
+
+
+

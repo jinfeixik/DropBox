@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.MemberInfoMapper">
+      <resultMap type="com.qst.entity.MemberInfo" id="memberInfoMap">
+      	<id property="memberId" column="member_id" />
+      	<result property="userId" column="user_id"/>
+      	<result property="memberStatus" column="member_status" />
+      	<result property="memberStartTime" column="member_startTime"/>
+      	<result property="memberEndTime" column="member_endTime"/>
+      </resultMap>
+      
+      <insert id="addMemberInfo" parameterType="com.qst.entity.MemberInfo">
+         insert into tb_member_info(user_id,member_status,member_startTime,member_endTime)values
+         (#{userId},#{memberStatus},#{memberStartTime},#{memberEndTime})
+      </insert>
+      
+      <update id="updateMembers" parameterType="com.qst.entity.MemberInfo">  
+		update tb_member_info set member_status=#{memberStatus},member_startTime=#{memberStartTime},member_endTime=#{memberEndTime} where user_id =#{userId}
+    </update>
+      
+      
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

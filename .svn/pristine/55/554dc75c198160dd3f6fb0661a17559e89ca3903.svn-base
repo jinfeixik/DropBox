@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qst.dao.UserInfoMapper">
+      
+      <resultMap type="com.qst.entity.UserInfo" id="userInfoMap001">
+      	<id property="userId" column="user_id" />
+      	<result property="userName" column="user_name" />
+      	<result property="userPassword" column="user_password" />
+      	<result property="userEmail" column="user_email" />
+      	<result property="userRegisterTime" column="user_registerTime" />
+      	<result property="usedSpace" column="user_usedSpace" />
+      	<result property="totalSpace" column="user_totalSpace" />
+      	<result property="userAvatar" column="user_avatar" />
+      	
+      </resultMap>
+      
+      
+      
+      <insert id="addUserInfo" parameterType="com.qst.entity.UserInfo">
+          insert into tb_user_info(user_name, user_password,user_email, user_registerTime, user_usedSpace, user_totalSpace, user_avatar) 
+          					values(#{userName},#{userPassword},#{userEmail},#{userRegisterTime}, #{usedSpace}, #{totalSpace}, #{userAvatar})
+      </insert>
+
+      <select id="findUserInfoById" parameterType="int" resultMap="userInfoMap001">
+      	select * from tb_user_info where user_id=#{no}
+      </select>
+      
+      
+      <select id="findUserInfoByName" parameterType="com.qst.entity.UserInfo" resultMap="userInfoMap001">
+      	select * from tb_user_info where user_name=#{userName} and user_password=#{userPassword}
+      </select>
+      
+      <update id="updateUserUsedSize" parameterType="com.qst.entity.UserInfo" >
+      	update tb_user_info set user_usedSpace=#{usedSpace} where user_id = #{userId}
+      </update>
+      
+      
+      
+      
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

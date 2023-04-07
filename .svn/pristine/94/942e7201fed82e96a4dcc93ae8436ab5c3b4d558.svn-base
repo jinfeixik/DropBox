@@ -1,0 +1,39 @@
+package com.qst.controller;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.qst.entity.UserInfo;
+import com.qst.service.UserInfoService;
+
+@Controller
+public class RegisterTestController {
+	
+	@Autowired
+	private  UserInfoService userService;
+	
+	
+	@RequestMapping("registerTo.form")
+	public String registerTo() {
+		return "RegisterTest";
+	}
+	
+	@RequestMapping("registerTest.form")
+	public ModelAndView register(UserInfo userInfo) {
+		Map <String, String> map = new HashMap<String, String>();
+		if(userInfo.getUserEmail() != null) {
+			userService.addUserInof(userInfo);
+			map.put("hello", "添加成功");
+		} else {
+			map.put("hello", "没有输入用户信息");
+		}
+		System.out.println(userInfo.toString());
+		return new ModelAndView("login", map);
+	}
+
+}

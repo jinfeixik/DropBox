@@ -1,0 +1,11 @@
+package com.qst.dao;
+
+/**
+ * @author 赵海庭（zhaohaiting）
+ * @date 2019-8-30下午2:36:35
+ * @version v1.0
+ * 传输管理
+ */
+public class FileTransferMapper {
+
+}

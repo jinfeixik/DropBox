@@ -1,0 +1,23 @@
+package com.qst.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.qst.dao.FolderInfoMapper;
+import com.qst.entity.FolderInfo;
+import com.qst.service.FolderInfoService;
+@Service
+public class FolderInfoServiceImpl implements FolderInfoService{
+
+	@Autowired
+	FolderInfoMapper folderDao;
+	
+	
+	@Override
+	public void addFolderInfo(FolderInfo folderInfo) {
+		
+		folderDao.addFolderInfo(folderInfo);
+
+	}
+
+}

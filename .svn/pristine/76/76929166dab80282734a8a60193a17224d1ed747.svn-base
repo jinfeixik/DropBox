@@ -1,0 +1,26 @@
+package com.qst.service;
+
+import com.qst.entity.FileInfo;
+import com.qst.entity.UserInfo;
+
+/**
+ * @author 袁滢yuanying
+ * @date 2019-8-28下午7:34:07
+ * @version v1.0
+ * 文件信息管理
+ */
+public interface FileInfoService {
+	
+	
+	/**
+	 * @param fileInfo
+	 * @param userInfo
+	 * 上传文件
+	 */
+	public void addFileInfo(FileInfo fileInfo, UserInfo userInfo);
+	
+	
+
+	public FileInfo findFileInfo(String fileId);
+
+}

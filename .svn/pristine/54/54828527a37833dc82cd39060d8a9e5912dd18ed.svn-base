@@ -1,0 +1,38 @@
+package com.qst.test;
+
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.qst.dao.UserInfoMapper;
+import com.qst.entity.UserInfo;
+
+
+class X{
+	Y b = new Y();
+	X() {
+		System.out.println("X");
+	}
+}
+
+class Y {
+	Y() {
+		System.out.println("Y");
+	}
+}
+
+
+
+
+public class YYTest001 extends X{
+
+	Y y = new Y();
+	YYTest001() {
+		System.out.println("Z");
+	}
+	
+	public static void main(String[] args) {
+		new YYTest001();
+	}
+	
+}

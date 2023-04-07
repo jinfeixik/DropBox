@@ -1,0 +1,122 @@
+package com.qst.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+
+import com.qst.dao.FileInfoMapper;
+import com.qst.dao.RecycleInfoMapper;
+import com.qst.entity.FileInfo;
+import com.qst.entity.RecycleInfo;
+import com.qst.entity.UserInfo;
+import com.qst.service.RecycleInfoService;
+import com.qst.util.CurrentTimeUtil;
+import com.qst.util.DeleteFileUtil;
+
+@Service
+public class RecycleInfoServiceImpl implements RecycleInfoService{
+	@Autowired
+	private RecycleInfoMapper recycleMapper;
+	@Autowired
+	private FileInfoMapper fileMapper;
+	
+	/**
+	 * 把文件移入回收站
+	 */
+	@Override
+	@Transactional
+	public void moveToRecycle(int fileId,int userId) {
+		RecycleInfo recycle = new RecycleInfo();
+		recycle.setUserId(1);
+		recycle.setFileId(fileId);
+		recycle.setRecycleTime(CurrentTimeUtil.getCurrentTime());
+		
+		System.out.println(recycle.toString());
+		recycleMapper.addRecycle(recycle);
+		
+		//更改文件状态
+		FileInfo fileInfo = recycleMapper.findFileById(fileId);
+		System.out.println(fileInfo.toString());
+		
+		fileInfo.setFileStatus(0);
+		System.out.println(fileInfo.toString());
+		recycleMapper.updateFileStatus(fileInfo);
+	}
+	
+	/**
+	 * 把文件移出回收站
+	 */
+	@Override
+	@Transactional
+	public void moveOutOfRecycle(int fileId,int userId) {
+		RecycleInfo recycle = new RecycleInfo();
+		recycle.setFileId(fileId);
+		recycle.setUserId(userId);
+		recycleMapper.deleteRecycle(recycle);
+		
+		//更改文件状态
+		FileInfo fileInfo = recycleMapper.findFileById(fileId);
+		System.out.println(fileInfo.toString());
+		
+		fileInfo.setFileStatus(1);
+		System.out.println(fileInfo.toString());
+		recycleMapper.updateFileStatus(fileInfo);
+	}
+	
+	/**
+	 * 删除回收站里的某个文件
+	 */
+	@Override
+	@Transactional
+	public void deleteRecycle(int fileId,int userId) {
+		RecycleInfo recycle = new RecycleInfo();
+		recycle.setFileId(fileId);
+		recycle.setUserId(userId);
+		recycleMapper.deleteRecycle(recycle);
+		
+		//删除文件
+		FileInfo fileInfo = recycleMapper.findFileById(fileId);
+		System.out.println(fileInfo.toString());
+		//String filePath = fileInfo.getFilePath();
+		String filePath = "upload/xj.txt";
+		DeleteFileUtil.deleteFile(filePath);
+	}
+	
+	/**
+	 * 清空用户的回收站
+	 */
+	@Override
+	@Transactional
+	public void clearRecycle(int userId) {
+		recycleMapper.clearRecycle(userId);
+		
+		//清空所有文件
+		List<FileInfo> fileInfos = recycleMapper.findAllFile(userId);
+		for (FileInfo fileInfo : fileInfos) {
+			System.out.println(fileInfo.toString());
+			String filePath = fileInfo.getFilePath();
+			DeleteFileUtil.deleteFile(filePath);
+		}
+	}
+	
+	/**
+	 * 获取回收站里的所有文件
+	 */
+	@Override
+	public List<FileInfo> getAllRecycleFile(int userId) {
+		List<FileInfo> fileInfos = recycleMapper.findAllFile(userId);
+		for (FileInfo fileInfo : fileInfos) {
+			System.out.println(fileInfo.toString());
+		}
+		return fileInfos;
+	}
+
+}
